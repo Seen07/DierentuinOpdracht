@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DierentuinOpdracht.Data;
+using DierentuinOpdracht.Models;
+using DierentuinOpdracht.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DierentuinOpdracht.Data;
-using DierentuinOpdracht.Models;
 
 namespace DierentuinOpdracht.Controllers
 {
@@ -22,8 +22,8 @@ namespace DierentuinOpdracht.Controllers
         // GET: Enclosures
         public async Task<IActionResult> Index()
         {
-            var zooDbContext = _context.Enclosures.Include(e => e.Zoo);
-            return View(await zooDbContext.ToListAsync());
+            var enclosures = _context.Enclosures.Include(e => e.Zoo);
+            return View(await enclosures.ToListAsync());
         }
 
         // GET: Enclosures/Details/5
@@ -37,6 +37,7 @@ namespace DierentuinOpdracht.Controllers
             var enclosure = await _context.Enclosures
                 .Include(e => e.Zoo)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (enclosure == null)
             {
                 return NotFound();
@@ -48,16 +49,14 @@ namespace DierentuinOpdracht.Controllers
         // GET: Enclosures/Create
         public IActionResult Create()
         {
-            ViewData["ZooId"] = new SelectList(_context.Zoos, "Id", "Id");
+            FillDropDowns();
             return View();
         }
 
         // POST: Enclosures/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Size,Climate,HabitatType,SecurityLevel,ZooId")] Enclosure enclosure)
+        public async Task<IActionResult> Create([Bind("Name,Size,Climate,HabitatType,SecurityLevel,ZooId")] Enclosure enclosure)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +64,8 @@ namespace DierentuinOpdracht.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ZooId"] = new SelectList(_context.Zoos, "Id", "Id", enclosure.ZooId);
+
+            FillDropDowns(enclosure);
             return View(enclosure);
         }
 
@@ -82,13 +82,12 @@ namespace DierentuinOpdracht.Controllers
             {
                 return NotFound();
             }
-            ViewData["ZooId"] = new SelectList(_context.Zoos, "Id", "Id", enclosure.ZooId);
+
+            FillDropDowns(enclosure);
             return View(enclosure);
         }
 
         // POST: Enclosures/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Size,Climate,HabitatType,SecurityLevel,ZooId")] Enclosure enclosure)
@@ -111,14 +110,14 @@ namespace DierentuinOpdracht.Controllers
                     {
                         return NotFound();
                     }
-                    else
-                    {
-                        throw;
-                    }
+
+                    throw;
                 }
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ZooId"] = new SelectList(_context.Zoos, "Id", "Id", enclosure.ZooId);
+
+            FillDropDowns(enclosure);
             return View(enclosure);
         }
 
@@ -133,6 +132,7 @@ namespace DierentuinOpdracht.Controllers
             var enclosure = await _context.Enclosures
                 .Include(e => e.Zoo)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (enclosure == null)
             {
                 return NotFound();
@@ -150,9 +150,9 @@ namespace DierentuinOpdracht.Controllers
             if (enclosure != null)
             {
                 _context.Enclosures.Remove(enclosure);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
@@ -160,5 +160,33 @@ namespace DierentuinOpdracht.Controllers
         {
             return _context.Enclosures.Any(e => e.Id == id);
         }
+
+        private void FillDropDowns(Enclosure? enclosure = null)
+        {
+            // Zoo dropdown (toon Name)
+            ViewData["ZooId"] = new SelectList(_context.Zoos, "Id", "Name", enclosure?.ZooId);
+
+            // Enum dropdowns
+            ViewData["Climate"] = new SelectList(
+                Enum.GetValues(typeof(Climate)).Cast<Climate>().Select(x => new { Id = x, Name = x.ToString() }),
+                "Id",
+                "Name",
+                enclosure?.Climate
+            );
+
+            ViewData["HabitatType"] = new SelectList(
+                Enum.GetValues(typeof(HabitatType)).Cast<HabitatType>().Select(x => new { Id = x, Name = x.ToString() }),
+                "Id",
+                "Name",
+                enclosure?.HabitatType
+            );
+
+            ViewData["SecurityLevel"] = new SelectList(
+                Enum.GetValues(typeof(SecurityLevel)).Cast<SecurityLevel>().Select(x => new { Id = x, Name = x.ToString() }),
+                "Id",
+                "Name",
+                enclosure?.SecurityLevel
+            );
+        }
     }
-}
+} 

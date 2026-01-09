@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DierentuinOpdracht.Data;
 using DierentuinOpdracht.Models;
+using DierentuinOpdracht.Models.Enums;
+
 
 namespace DierentuinOpdracht.Controllers
 {
@@ -16,6 +18,73 @@ namespace DierentuinOpdracht.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public async Task<IActionResult> Sunrise(int id)
+        {
+            var animal = await _context.Animals.FirstOrDefaultAsync(a => a.Id == id);
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            string message;
+
+            if (animal.ActivityPattern == ActivityPattern.Diurnal)
+            {
+                message = $"{animal.Name} wordt wakker bij zonsopgang.";
+            }
+            else if (animal.ActivityPattern == ActivityPattern.Nocturnal)
+            {
+                message = $"{animal.Name} gaat slapen bij zonsopgang.";
+            }
+            else
+            {
+                message = $"{animal.Name} is altijd actief.";
+            }
+
+            ViewBag.AnimalName = animal.Name;
+            ViewBag.Message = message;
+
+            return View();
+        }
+
+           
+           
+
+        
+        [HttpGet]
+        public async Task<IActionResult> Sunset(int id)
+        {
+            var animal = await _context.Animals.FirstOrDefaultAsync(a => a.Id == id);
+            if (animal == null)
+            {
+                return NotFound("Animal niet gevonden");
+            }
+
+            string message;
+
+            switch (animal.ActivityPattern)
+            {
+                case ActivityPattern.Diurnal:
+                    message = $"{animal.Name} gaat slapen bij zonsondergang.";
+                    break;
+
+                case ActivityPattern.Nocturnal:
+                    message = $"{animal.Name} wordt wakker bij zonsondergang.";
+                    break;
+
+                default:
+                    message = $"{animal.Name} is altijd actief.";
+                    break;
+            }
+
+            ViewBag.Title = "Sunset";
+            ViewBag.AnimalName = animal.Name;
+            ViewBag.Message = message;
+
+            return View("ActionResult");
+        }
+
 
         // GET: Animals
         public async Task<IActionResult> Index()
@@ -155,6 +224,7 @@ namespace DierentuinOpdracht.Controllers
             return View(animal);
         }
 
+
         // POST: Animals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -174,5 +244,7 @@ namespace DierentuinOpdracht.Controllers
         {
             return _context.Animals.Any(e => e.Id == id);
         }
+
     }
+
 }

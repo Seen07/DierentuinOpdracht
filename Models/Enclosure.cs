@@ -18,9 +18,9 @@ namespace DierentuinOpdracht.Models
         public HabitatType HabitatType { get; set; }
         public SecurityLevel SecurityLevel { get; set; }        
 
-        public List<Animal> Animals { get; set; } = new();
+        public List<Animal>? Animals { get; set; } = new();
 
         public int? ZooId { get; set; }
-        public Zoo Zoo { get; set; }
+        public Zoo? Zoo { get; set; }
     }
 }

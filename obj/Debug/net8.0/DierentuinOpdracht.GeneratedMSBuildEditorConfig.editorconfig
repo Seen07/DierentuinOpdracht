@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Yassin\Downloads\DierentuinOpdracht
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/ActionResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xBY3Rpb25SZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Sunrise.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xTdW5yaXNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Categories/Create.cshtml]
@@ -88,10 +96,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Shared/Error.cshtml]

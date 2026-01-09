@@ -10,38 +10,46 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Size" class="control-label"></label>
                 <input asp-for="Size" class="form-control" />
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Climate" class="control-label"></label>
-                <select asp-for="Climate" class="form-control"></select>
+                <select asp-for="Climate" class="form-control" asp-items="ViewBag.Climate"></select>
                 <span asp-validation-for="Climate" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="HabitatType" class="control-label"></label>
-                <select asp-for="HabitatType" class="form-control"></select>
+                <select asp-for="HabitatType" class="form-control" asp-items="ViewBag.HabitatType"></select>
                 <span asp-validation-for="HabitatType" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="SecurityLevel" class="control-label"></label>
-                <select asp-for="SecurityLevel" class="form-control"></select>
+                <select asp-for="SecurityLevel" class="form-control" asp-items="ViewBag.SecurityLevel"></select>
                 <span asp-validation-for="SecurityLevel" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ZooId" class="control-label"></label>
-                <select asp-for="ZooId" class ="form-control" asp-items="ViewBag.ZooId"></select>
+                <select asp-for="ZooId" class="form-control" asp-items="ViewBag.ZooId"></select>
+                <span asp-validation-for="ZooId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mt-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -53,5 +61,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

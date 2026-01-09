@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Sunrise";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4"> Sunrise</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">
+                @ViewBag.AnimalName
+            </h4>
+
+            <p class="card-text fs-5">
+                @ViewBag.Message
+            </p>
+
+            <hr />
+
+            <div class="d-flex gap-2">
+                <a asp-action="Index" class="btn btn-secondary">
+                    ← Back to animals
+                </a>
+
+              
+            </div>
+        </div>
+    </div>
+</div>
