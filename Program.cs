@@ -1,5 +1,6 @@
 using DierentuinOpdracht.Data;
 using DierentuinOpdracht.Services;
+using DierentuinOpdracht.Services.Actions;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddScoped<AnimalService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<EnclosureService>();
 builder.Services.AddScoped<ZooService>();
+builder.Services.AddScoped<AnimalActionService>();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())

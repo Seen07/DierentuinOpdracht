@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,8 +20,11 @@ namespace DierentuinOpdracht.Controllers
         // GET: Animals
         public async Task<IActionResult> Index()
         {
-            var zooDbContext = _context.Animals.Include(a => a.Category).Include(a => a.Enclosure);
-            return View(await zooDbContext.ToListAsync());
+            var animals = _context.Animals
+                .Include(a => a.Category)
+                .Include(a => a.Enclosure);
+
+            return View(await animals.ToListAsync());
         }
 
         // GET: Animals/Details/5
@@ -38,6 +39,7 @@ namespace DierentuinOpdracht.Controllers
                 .Include(a => a.Category)
                 .Include(a => a.Enclosure)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (animal == null)
             {
                 return NotFound();
@@ -49,17 +51,17 @@ namespace DierentuinOpdracht.Controllers
         // GET: Animals/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
-            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Name");
             return View();
         }
 
         // POST: Animals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Species,Size,DietaryClass,ActivityPattern,SecurityRequirement,SpaceRequirement,Prey,CategoryId,EnclosureId")] Animal animal)
+        public async Task<IActionResult> Create(
+            [Bind("Name,Species,Size,DietaryClass,ActivityPattern,SecurityRequirement,SpaceRequirement,Prey,CategoryId,EnclosureId")]
+            Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +69,9 @@ namespace DierentuinOpdracht.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", animal.CategoryId);
-            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Id", animal.EnclosureId);
+
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", animal.CategoryId);
+            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Name", animal.EnclosureId);
             return View(animal);
         }
 
@@ -85,17 +88,19 @@ namespace DierentuinOpdracht.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", animal.CategoryId);
-            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Id", animal.EnclosureId);
+
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", animal.CategoryId);
+            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Name", animal.EnclosureId);
             return View(animal);
         }
 
         // POST: Animals/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Species,Size,DietaryClass,ActivityPattern,SecurityRequirement,SpaceRequirement,Prey,CategoryId,EnclosureId")] Animal animal)
+        public async Task<IActionResult> Edit(
+            int id,
+            [Bind("Id,Name,Species,Size,DietaryClass,ActivityPattern,SecurityRequirement,SpaceRequirement,Prey,CategoryId,EnclosureId")]
+            Animal animal)
         {
             if (id != animal.Id)
             {
@@ -120,10 +125,12 @@ namespace DierentuinOpdracht.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", animal.CategoryId);
-            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Id", animal.EnclosureId);
+
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", animal.CategoryId);
+            ViewData["EnclosureId"] = new SelectList(_context.Enclosures, "Id", "Name", animal.EnclosureId);
             return View(animal);
         }
 
@@ -139,6 +146,7 @@ namespace DierentuinOpdracht.Controllers
                 .Include(a => a.Category)
                 .Include(a => a.Enclosure)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (animal == null)
             {
                 return NotFound();
@@ -156,9 +164,9 @@ namespace DierentuinOpdracht.Controllers
             if (animal != null)
             {
                 _context.Animals.Remove(animal);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

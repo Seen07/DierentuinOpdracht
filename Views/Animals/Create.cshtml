@@ -10,56 +10,77 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Species" class="control-label"></label>
                 <input asp-for="Species" class="form-control" />
                 <span asp-validation-for="Species" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Size" class="control-label"></label>
-                <select asp-for="Size" class="form-control"></select>
+                <select asp-for="Size" class="form-control"
+                        asp-items="Html.GetEnumSelectList<DierentuinOpdracht.Models.Enums.AnimalSize>()">
+                </select>
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="DietaryClass" class="control-label"></label>
-                <select asp-for="DietaryClass" class="form-control"></select>
+                <select asp-for="DietaryClass" class="form-control"
+                        asp-items="Html.GetEnumSelectList<DierentuinOpdracht.Models.Enums.DietaryClass>()">
+                </select>
                 <span asp-validation-for="DietaryClass" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ActivityPattern" class="control-label"></label>
-                <select asp-for="ActivityPattern" class="form-control"></select>
+                <select asp-for="ActivityPattern" class="form-control"
+                        asp-items="Html.GetEnumSelectList<DierentuinOpdracht.Models.Enums.ActivityPattern>()">
+                </select>
                 <span asp-validation-for="ActivityPattern" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="SecurityRequirement" class="control-label"></label>
-                <select asp-for="SecurityRequirement" class="form-control"></select>
+                <select asp-for="SecurityRequirement" class="form-control"
+                        asp-items="Html.GetEnumSelectList<DierentuinOpdracht.Models.Enums.SecurityLevel>()">
+                </select>
                 <span asp-validation-for="SecurityRequirement" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="SpaceRequirement" class="control-label"></label>
                 <input asp-for="SpaceRequirement" class="form-control" />
                 <span asp-validation-for="SpaceRequirement" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Prey" class="control-label"></label>
                 <input asp-for="Prey" class="form-control" />
                 <span asp-validation-for="Prey" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="EnclosureId" class="control-label"></label>
-                <select asp-for="EnclosureId" class ="form-control" asp-items="ViewBag.EnclosureId"></select>
+                <select asp-for="EnclosureId" class="form-control" asp-items="ViewBag.EnclosureId"></select>
+                <span asp-validation-for="EnclosureId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -72,5 +93,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

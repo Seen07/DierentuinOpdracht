@@ -9,9 +9,10 @@ namespace DierentuinOpdracht.Data
         {
             context.Database.EnsureCreated();
 
-            if (context.Zoos.Any())
+            // Als er al data is, seed niet opnieuw (voorkomt dubbele dropdown items)
+            if (context.Categories.Any() || context.Enclosures.Any() || context.Animals.Any() || context.Zoos.Any())
             {
-                return; 
+                return;
             }
 
             var mammals = new Category { Name = "Mammals" };
@@ -24,7 +25,7 @@ namespace DierentuinOpdracht.Data
                 Name = "Savanna Enclosure",
                 Size = 5000,
                 Climate = Climate.Tropical,
-                HabitatType = HabitatType.Savanna,
+                HabitatType = HabitatType.Grassland,
                 SecurityLevel = SecurityLevel.Medium,
                 Zoo = zoo
             };
@@ -34,7 +35,7 @@ namespace DierentuinOpdracht.Data
                 Name = "Arctic Enclosure",
                 Size = 3000,
                 Climate = Climate.Arctic,
-                HabitatType = HabitatType.Mountain,
+                HabitatType = HabitatType.Desert,
                 SecurityLevel = SecurityLevel.High,
                 Zoo = zoo
             };

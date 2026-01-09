@@ -16,12 +16,12 @@ namespace DierentuinOpdracht.Models
 
         public double SpaceRequirement { get; set; }
 
-        public string Prey { get; set; }
+        public string? Prey { get; set; }
 
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
 
         public int? EnclosureId { get; set; }
-        public Enclosure Enclosure { get; set; }
+        public Enclosure? Enclosure { get; set; }
     }
 }

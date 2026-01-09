@@ -260,7 +260,4 @@ C:\Users\Yassin\Downloads\DierentuinOpdracht\bin\Debug\net8.0\ru\Microsoft.CodeA
 C:\Users\Yassin\Downloads\DierentuinOpdracht\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\Yassin\Downloads\DierentuinOpdracht\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\Yassin\Downloads\DierentuinOpdracht\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\Users\Yassin\Downloads\DierentuinOpdracht\bin\Debug\net8.0\DierentuinOpdracht.staticwebassets.endpoints.json
-C:\Users\Yassin\Downloads\DierentuinOpdracht\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Yassin\Downloads\DierentuinOpdracht\obj\Debug\net8.0\staticwebassets\msbuild.DierentuinOpdracht.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Yassin\Downloads\DierentuinOpdracht\obj\Debug\net8.0\Dierentu.69EF64F5.Up2Date
+C:\Users\Yassin\Downloads\DierentuinOpdracht\obj\Debug\net8.0\DierentuinOpdracht.csproj.CopyComplete
