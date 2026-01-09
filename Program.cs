@@ -1,4 +1,5 @@
 using DierentuinOpdracht.Data;
+using DierentuinOpdracht.Services;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ZooDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<AnimalService>();
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<EnclosureService>();
+builder.Services.AddScoped<ZooService>();
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
