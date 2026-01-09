@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DierentuinOpdracht
 build_property.RootNamespace = DierentuinOpdracht
@@ -17,6 +25,66 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\Yassin\Downloads\DierentuinOpdracht
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Categories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
@@ -32,6 +100,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/_ViewImports.cshtml]

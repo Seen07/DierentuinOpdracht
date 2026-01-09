@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Yassin\\Downloads\\DierentuinOpdracht\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DierentuinOpdracht.bundle.scp.css",
-      "PackagePath": "staticwebassets\\DierentuinOpdracht.bundle.scp.css"
+      "PackagePath": "staticwebassets\\DierentuinOpdracht.s4a5tyzlqb.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Yassin\\Downloads\\DierentuinOpdracht\\wwwroot\\css\\site.css",
@@ -243,6 +243,10 @@
     {
       "Id": "C:\\Users\\Yassin\\Downloads\\DierentuinOpdracht\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DierentuinOpdracht.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DierentuinOpdracht.Microsoft.AspNetCore.StaticWebAssets.props",

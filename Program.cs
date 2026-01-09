@@ -13,6 +13,11 @@ builder.Services.AddScoped<EnclosureService>();
 builder.Services.AddScoped<ZooService>();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ZooDbContext>();
+    SeedData.Initialize(context);
+}
 
 
 // Configure the HTTP request pipeline.
@@ -29,7 +34,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.MapControllers();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
