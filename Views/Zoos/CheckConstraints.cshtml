@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Check constraints";
+    var results = ViewBag.Results as System.Collections.Generic.List<string>
+                  ?? new System.Collections.Generic.List<string>();
+}
+
+<h1>Check constraints</h1>
+<h4>@ViewBag.ZooName</h4>
+<hr />
+
+<ul>
+    @foreach (var line in results)
+    {
+        <li>@line</li>
+    }
+</ul>
+
+<a asp-action="Index" class="btn btn-secondary">Back to Zoos</a>

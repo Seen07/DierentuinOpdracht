@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\Api\AnimalsController.cs" />
     <Compile Remove="Views\Animals\Sunrise.cshtml.cs" />
   </ItemGroup>
 
@@ -25,10 +24,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.22" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\Api\" />
   </ItemGroup>
 
 </Project>

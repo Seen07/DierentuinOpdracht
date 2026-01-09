@@ -1,0 +1,31 @@
+﻿@model DierentuinOpdracht.Controllers.EnclosuresController.EnclosureFeedingTimeViewModel
+
+@{
+    ViewData["Title"] = "Feeding time";
+}
+
+<h1>Feeding time</h1>
+<h4>@Model.EnclosureName</h4>
+<hr />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Animal</th>
+            <th>Species</th>
+            <th>Food</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in Model.Rows)
+        {
+            <tr>
+                <td>@row.AnimalName</td>
+                <td>@row.Species</td>
+                <td>@row.Food</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Back to Enclosures</a>

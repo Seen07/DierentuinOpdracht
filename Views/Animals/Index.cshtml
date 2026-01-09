@@ -1,92 +1,123 @@
 ﻿@model IEnumerable<DierentuinOpdracht.Models.Animal>
+@using DierentuinOpdracht.Models.Enums
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Animals";
 }
 
-<h1>Index</h1>
+<h1>Animals</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<div class="card mb-3">
+    <div class="card-body">
+        <form asp-action="Index" method="get" class="row g-2">
+            <div class="col-md-3">
+                <label class="form-label">Search (Name/Species)</label>
+                <input name="search" class="form-control" value="@ViewBag.Search" />
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Size</label>
+                <select name="size" class="form-control">
+                    <option value="">-- All --</option>
+                    @foreach (var item in Html.GetEnumSelectList<AnimalSize>())
+                    {
+                        <option value="@item.Value" selected="@(ViewBag.Size != null && item.Value == ((int)ViewBag.Size).ToString())">@item.Text</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Dietary</label>
+                <select name="dietaryClass" class="form-control">
+                    <option value="">-- All --</option>
+                    @foreach (var item in Html.GetEnumSelectList<DietaryClass>())
+                    {
+                        <option value="@item.Value" selected="@(ViewBag.DietaryClass != null && item.Value == ((int)ViewBag.DietaryClass).ToString())">@item.Text</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Activity</label>
+                <select name="activityPattern" class="form-control">
+                    <option value="">-- All --</option>
+                    @foreach (var item in Html.GetEnumSelectList<ActivityPattern>())
+                    {
+                        <option value="@item.Value" selected="@(ViewBag.ActivityPattern != null && item.Value == ((int)ViewBag.ActivityPattern).ToString())">@item.Text</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Security</label>
+                <select name="securityRequirement" class="form-control">
+                    <option value="">-- All --</option>
+                    @foreach (var item in Html.GetEnumSelectList<SecurityLevel>())
+                    {
+                        <option value="@item.Value" selected="@(ViewBag.SecurityRequirement != null && item.Value == ((int)ViewBag.SecurityRequirement).ToString())">@item.Text</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Category</label>
+                <select name="categoryId" class="form-control" asp-items="ViewBag.Categories">
+                    <option value="">-- All --</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Enclosure</label>
+                <select name="enclosureId" class="form-control" asp-items="ViewBag.Enclosures">
+                    <option value="">-- All --</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-end gap-2">
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a asp-action="Index" class="btn btn-secondary">Reset</a>
+                <a asp-action="Create" class="btn btn-success">Create new</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Species)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DietaryClass)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActivityPattern)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecurityRequirement)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpaceRequirement)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prey)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Enclosure)
-            </th>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Size</th>
+            <th>Dietary</th>
+            <th>Activity</th>
+            <th>Security</th>
+            <th>Category</th>
+            <th>Enclosure</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Species)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DietaryClass)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActivityPattern)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecurityRequirement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpaceRequirement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prey)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Enclosure.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    <a asp-controller="Animals" asp-action="Sunrise" asp-route-id="@item.Id">Sunrise</a> |
-                    <a asp-controller="Animals" asp-action="Sunset" asp-route-id="@item.Id">Sunset</a>
-
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Species</td>
+                <td>@item.Size</td>
+                <td>@item.DietaryClass</td>
+                <td>@item.ActivityPattern</td>
+                <td>@item.SecurityRequirement</td>
+                <td>@(item.Category != null ? item.Category.Name : "NULL")</td>
+                <td>@(item.Enclosure != null ? item.Enclosure.Name : "NULL")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-action="Sunrise" asp-route-id="@item.Id">Sunrise</a> |
+                    <a asp-action="Sunset" asp-route-id="@item.Id">Sunset</a> |
+                    <a asp-action="FeedingTime" asp-route-id="@item.Id">Feeding</a> |
+                    <a asp-action="CheckConstraints" asp-route-id="@item.Id">Constraints</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

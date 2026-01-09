@@ -18,6 +18,151 @@ namespace DierentuinOpdracht.Controllers
         {
             _context = context;
         }
+
+        
+        [HttpGet]
+        public async Task<IActionResult> CheckConstraints(int id)
+        {
+            var animal = await _context.Animals
+                .Include(a => a.Enclosure)
+                .Include(a => a.Category)
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (animal == null)
+            {
+                return NotFound("Animal niet gevonden");
+            }
+
+            var results = new List<string>();
+
+        
+            if (string.IsNullOrWhiteSpace(animal.Name))
+            {
+                results.Add("Name ontbreekt.");
+            }
+            else
+            {
+                results.Add("Name is ingevuld.");
+            }
+
+            if (string.IsNullOrWhiteSpace(animal.Species))
+            {
+                results.Add(" Species ontbreekt");
+            }
+            else
+            {
+                results.Add("Species is ingevuld.");
+            }
+
+            if (animal.SpaceRequirement <= 0)
+            {
+                results.Add(" SpaceRequirement voldoet niet");
+            }
+            else
+            {
+                results.Add(" SpaceRequirement is goed");
+            }
+
+            
+            if (animal.CategoryId == null)
+            {
+                results.Add(" Category is leeg");
+            }
+            else
+            {
+                results.Add("Category is gekoppeld.");
+            }
+
+            if (animal.Enclosure == null)
+            {
+                results.Add(" Enclosure is niet ingevuld");
+            }
+            else
+            {
+                
+                if (animal.SpaceRequirement > animal.Enclosure.Size)
+                {
+                    results.Add(" Te weinig ruimte");
+                }
+                else
+                {
+                    results.Add(" Genoeg ruimte in het verblijf.");
+                }
+
+            
+                if (animal.SecurityRequirement > animal.Enclosure.SecurityLevel)
+                {
+                    results.Add("Security mismatch");
+                }
+                else
+                {
+                    results.Add(" Security level voldoende");
+                }
+            }
+
+            ViewBag.AnimalName = animal.Name;
+            ViewBag.Results = results;
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> FeedingTime(int id)
+        {
+            var animal = await _context.Animals
+                .Include(a => a.Enclosure)
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (animal == null)
+            {
+                return NotFound("Animal niet gevonden");
+            }
+
+            var message = await GetFeedingMessageAsync(animal);
+
+            ViewBag.AnimalName = animal.Name;
+            ViewBag.Message = message;
+
+            return View();
+        }
+
+        private async Task<string> GetFeedingMessageAsync(Models.Animal animal)
+        {
+            
+            if (animal.EnclosureId.HasValue && animal.DietaryClass == DietaryClass.Carnivore)
+            {
+                var otherAnimals = await _context.Animals
+                    .Where(a => a.EnclosureId == animal.EnclosureId && a.Id != animal.Id)
+                    .ToListAsync();
+
+              
+                var target = otherAnimals.FirstOrDefault();
+                if (target != null)
+                {
+                    return $"{animal.Name} eet {target.Name} (uit hetzelfde verblijf).";
+                }
+            }
+
+          
+            if (!string.IsNullOrWhiteSpace(animal.Prey))
+            {
+                return $"{animal.Name} eet {animal.Prey}.";
+            }
+
+           
+            return animal.DietaryClass switch
+            {
+                DietaryClass.Herbivore => $"{animal.Name} eet planten.",
+                DietaryClass.Omnivore => $"{animal.Name} eet planten en vlees.",
+                DietaryClass.Carnivore => $"{animal.Name} eet vlees.",
+                DietaryClass.Insectivore => $"{animal.Name} eet insecten.",
+                DietaryClass.Piscivore => $"{animal.Name} eet vis.",
+                _ => $"{animal.Name} eet onbekend voedsel."
+            };
+        }
+
+
         [HttpGet]
         public async Task<IActionResult> Sunrise(int id)
         {
@@ -87,13 +232,68 @@ namespace DierentuinOpdracht.Controllers
 
 
         // GET: Animals
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            string? search,
+            AnimalSize? size,
+            DietaryClass? dietaryClass,
+            ActivityPattern? activityPattern,
+            SecurityLevel? securityRequirement,
+            int? categoryId,
+            int? enclosureId)
         {
-            var animals = _context.Animals
+            var query = _context.Animals
                 .Include(a => a.Category)
-                .Include(a => a.Enclosure);
+                .Include(a => a.Enclosure)
+                .AsQueryable();
 
-            return View(await animals.ToListAsync());
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(a =>
+                    a.Name.Contains(search) ||
+                    a.Species.Contains(search));
+            }
+
+            if (size.HasValue)
+            {
+                query = query.Where(a => a.Size == size.Value);
+            }
+
+            if (dietaryClass.HasValue)
+            {
+                query = query.Where(a => a.DietaryClass == dietaryClass.Value);
+            }
+
+            if (activityPattern.HasValue)
+            {
+                query = query.Where(a => a.ActivityPattern == activityPattern.Value);
+            }
+
+            if (securityRequirement.HasValue)
+            {
+                query = query.Where(a => a.SecurityRequirement == securityRequirement.Value);
+            }
+
+            if (categoryId.HasValue)
+            {
+                query = query.Where(a => a.CategoryId == categoryId.Value);
+            }
+
+            if (enclosureId.HasValue)
+            {
+                query = query.Where(a => a.EnclosureId == enclosureId.Value);
+            }
+
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", categoryId);
+            ViewBag.Enclosures = new SelectList(_context.Enclosures, "Id", "Name", enclosureId);
+
+            ViewBag.Search = search;
+            ViewBag.Size = size;
+            ViewBag.DietaryClass = dietaryClass;
+            ViewBag.ActivityPattern = activityPattern;
+            ViewBag.SecurityRequirement = securityRequirement;
+
+            var animals = await query.ToListAsync();
+            return View(animals);
         }
 
         // GET: Animals/Details/5

@@ -1,0 +1,53 @@
+﻿@using System.Linq
+@{
+    ViewData["Title"] = ViewBag.ActionTitle ?? "Day cycle";
+
+    var wakingUp = ViewBag.WakingUp as IEnumerable<DierentuinOpdracht.Models.Animal>
+                   ?? Enumerable.Empty<DierentuinOpdracht.Models.Animal>();
+
+    var goingToSleep = ViewBag.GoingToSleep as IEnumerable<DierentuinOpdracht.Models.Animal>
+                       ?? Enumerable.Empty<DierentuinOpdracht.Models.Animal>();
+
+    var alwaysActive = ViewBag.AlwaysActive as IEnumerable<DierentuinOpdracht.Models.Animal>
+                       ?? Enumerable.Empty<DierentuinOpdracht.Models.Animal>();
+}
+
+<h1>@ViewBag.ActionTitle</h1>
+<h4>@ViewBag.ZooName</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <h5>Waking up</h5>
+        <ul>
+            @foreach (var a in wakingUp)
+            {
+                <li>@a.Name (@a.Species)</li>
+            }
+        </ul>
+    </div>
+
+    <div class="col-md-4">
+        <h5>Going to sleep</h5>
+        <ul>
+            @foreach (var a in goingToSleep)
+            {
+                <li>@a.Name (@a.Species)</li>
+            }
+        </ul>
+    </div>
+
+    <div class="col-md-4">
+        <h5>Always active</h5>
+        <ul>
+            @foreach (var a in alwaysActive)
+            {
+                <li>@a.Name (@a.Species)</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to Zoos</a>
+</div>

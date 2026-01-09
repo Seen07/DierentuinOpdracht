@@ -7,9 +7,9 @@ namespace DierentuinOpdracht.Data
     {
         public static void Initialize(ZooDbContext context)
         {
-            context.Database.EnsureCreated();
+            
 
-            // Als er al data is, seed niet opnieuw (voorkomt dubbele dropdown items)
+            
             if (context.Categories.Any() || context.Enclosures.Any() || context.Animals.Any() || context.Zoos.Any())
             {
                 return;

@@ -1,35 +1,61 @@
 ﻿@model IEnumerable<DierentuinOpdracht.Models.Zoo>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Zoos";
 }
 
-<h1>Index</h1>
+<h1>Zoos</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<div class="card mb-3">
+    <div class="card-body">
+        <form asp-action="Index" method="get" class="row g-2">
+            <div class="col-md-4">
+                <label class="form-label">Search (Name)</label>
+                <input name="search" class="form-control" value="@ViewBag.Search" />
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Min enclosures</label>
+                <input name="minEnclosures" type="number" min="0" class="form-control" value="@ViewBag.MinEnclosures" />
+            </div>
+
+            <div class="col-md-5 d-flex align-items-end gap-2">
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a asp-action="Index" class="btn btn-secondary">Reset</a>
+                <a asp-action="Create" class="btn btn-success">Create new</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
+            <th>Name</th>
+            <th>Enclosures</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@(item.Enclosures != null ? item.Enclosures.Count : 0)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    | <a asp-action="Sunrise" asp-route-id="@item.Id">Sunrise</a>
+                    | <a asp-action="Sunset" asp-route-id="@item.Id">Sunset</a>
+                    | <a asp-action="FeedingTime" asp-route-id="@item.Id">Feeding</a>
+                    | <a asp-action="CheckConstraints" asp-route-id="@item.Id">Constraints</a>
+                   
+
+
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

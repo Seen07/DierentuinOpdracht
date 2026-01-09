@@ -30,6 +30,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xBY3Rpb25SZXN1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/CheckConstraints.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xDaGVja0NvbnN0cmFpbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/FeedingTime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsc1xGZWVkaW5nVGltZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Animals/Index.cshtml]
@@ -74,8 +82,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/CheckConstraints.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xDaGVja0NvbnN0cmFpbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/DayCycle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xEYXlDeWNsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Delete.cshtml]
@@ -88,6 +104,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/FeedingTime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5jbG9zdXJlc1xGZWVkaW5nVGltZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Enclosures/Index.cshtml]
@@ -106,8 +126,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/CheckConstraints.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xDaGVja0NvbnN0cmFpbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/DayCycle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xEYXlDeWNsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Delete.cshtml]
@@ -120,6 +148,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/FeedingTime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWm9vc1xGZWVkaW5nVGltZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Yassin/Downloads/DierentuinOpdracht/Views/Zoos/Index.cshtml]
